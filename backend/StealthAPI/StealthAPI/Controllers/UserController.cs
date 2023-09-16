@@ -21,7 +21,7 @@ namespace StealthAPI.Controllers
         }
 
         [HttpPost]
-        public bool Login([FromBody] User user) 
+        public bool Login(User user) 
         {
             using (var db = new StealthdbContext())
             {
