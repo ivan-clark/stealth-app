@@ -3,6 +3,7 @@ import PrivateRoute from "./utils/PrivateRoute";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Error from "./pages/Error";
+import Register from "./pages/Register";
 
 const App = () => { 
   const isLoggedIn = localStorage.getItem("auth") === "true";
@@ -19,6 +20,7 @@ const App = () => {
         <Routes>
           <Route exact path="/" element={protect(Home)} />
           <Route exact path="/login" element={<Login/>} />
+          <Route exact path="/register" element={<Register/>} />
           <Route path="*" element={<Error/>} />
         </Routes>
       </BrowserRouter>

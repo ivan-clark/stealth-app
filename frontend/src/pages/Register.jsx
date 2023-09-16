@@ -1,16 +1,15 @@
 import { useState } from "react";
 import Api from "../services/Api";
 
-const Login = () => {
+const Register = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = () => {
-    Api.login(username, password)
+  const handleRegister = () => {
+    Api.register(username, password)
       .then((response) => {
         if (response.data) {
-          localStorage.setItem("auth", response.data);
-          window.location.replace("/");
+          window.location.replace("/login");
         }
       })
       .catch((error) => console.log(error));
@@ -19,13 +18,13 @@ const Login = () => {
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
       e.preventDefault();
-      handleLogin();
+      handleRegister();
     }
   };
 
   return (
     <div>
-      <h2>Login</h2>
+      <h2>Register</h2>
       <div>
         <label htmlFor="username">Username:</label>
         <input
@@ -50,11 +49,11 @@ const Login = () => {
           required
         />
       </div>
-      <button type="button" onClick={handleLogin}>
-        Login
+      <button type="button" onClick={handleRegister}>
+      Register
       </button>
     </div>
   );
 };
 
-export default Login;
+export default Register;

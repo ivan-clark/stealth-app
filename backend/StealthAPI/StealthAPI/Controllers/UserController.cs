@@ -29,5 +29,20 @@ namespace StealthAPI.Controllers
                 return users.Count == 1;
             }
         }
+
+        [HttpPost]
+        public bool Register(User user)
+        {
+            using (var db = new StealthdbContext())
+            {
+                var existingUser = db.Users.Where(u => u.Username == user.Username).ToList();
+                if (existingUser.Count == 0) {
+                    db.Users.Add(user);
+                    db.SaveChanges();
+                    return true;
+                }
+                return false;
+            }
+        }
     }
 }

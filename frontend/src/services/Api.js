@@ -8,6 +8,13 @@ const Api = {
     });
   },
 
+  register: (username, password) => {
+    return Http.post('/api/Register', {
+      username: username,
+      password: password
+    });
+  },
+
   getUserData: (userId) => {
     return Http.get(`/api/User/${userId}`);
   },
